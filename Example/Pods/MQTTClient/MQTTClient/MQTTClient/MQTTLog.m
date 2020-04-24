@@ -12,15 +12,15 @@
 
 #ifdef DEBUG
 
-DDLogLevel ddLogLevel = DDLogLevelVerbose;
+MQTTDDLogLevel ddLogLevel = MQTTDDLogLevelVerbose;
 
 #else
 
-DDLogLevel ddLogLevel = DDLogLevelWarning;
+MQTTDDLogLevel ddLogLevel = MQTTDDLogLevelWarning;
 
 #endif
 
-+ (void)setLogLevel:(DDLogLevel)logLevel {
++ (void)setLogLevel:(MQTTDDLogLevel)logLevel {
     ddLogLevel = logLevel;
 }
 

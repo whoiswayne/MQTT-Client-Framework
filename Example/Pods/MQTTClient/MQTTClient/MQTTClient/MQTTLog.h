@@ -15,75 +15,75 @@
 
 #else /* LUMBERJACK */
 
-typedef NS_OPTIONS(NSUInteger, DDLogFlag){
+typedef NS_OPTIONS(NSUInteger, MQTTDDLogFlag){
     /**
-     *  0...00001 DDLogFlagError
+     *  0...00001 MQTTDDLogFlagError
      */
-    DDLogFlagError      = (1 << 0),
+    MQTTDDLogFlagError      = (1 << 0),
 
     /**
-     *  0...00010 DDLogFlagWarning
+     *  0...00010 MQTTDDLogFlagWarning
      */
-    DDLogFlagWarning    = (1 << 1),
+    MQTTDDLogFlagWarning    = (1 << 1),
 
     /**
-     *  0...00100 DDLogFlagInfo
+     *  0...00100 MQTTDDLogFlagInfo
      */
-    DDLogFlagInfo       = (1 << 2),
+    MQTTDDLogFlagInfo       = (1 << 2),
 
     /**
-     *  0...01000 DDLogFlagDebug
+     *  0...01000 MQTTDDLogFlagDebug
      */
-    DDLogFlagDebug      = (1 << 3),
+    MQTTDDLogFlagDebug      = (1 << 3),
 
     /**
-     *  0...10000 DDLogFlagVerbose
+     *  0...10000 MQTTDDLogFlagVerbose
      */
-    DDLogFlagVerbose    = (1 << 4)
+    MQTTDDLogFlagVerbose    = (1 << 4)
 };
 
 
-typedef NS_ENUM(NSUInteger, DDLogLevel){
-DDLogLevelOff       = 0,
+typedef NS_ENUM(NSUInteger, MQTTDDLogLevel){
+MQTTDDLogLevelOff       = 0,
 
 /**
  *  Error logs only
  */
-DDLogLevelError     = (DDLogFlagError),
+MQTTDDLogLevelError     = (MQTTDDLogFlagError),
 
 /**
  *  Error and warning logs
  */
-DDLogLevelWarning   = (DDLogLevelError   | DDLogFlagWarning),
+MQTTDDLogLevelWarning   = (MQTTDDLogLevelError   | MQTTDDLogFlagWarning),
 
 /**
  *  Error, warning and info logs
  */
-DDLogLevelInfo      = (DDLogLevelWarning | DDLogFlagInfo),
+MQTTDDLogLevelInfo      = (MQTTDDLogLevelWarning | MQTTDDLogFlagInfo),
 
 /**
  *  Error, warning, info and debug logs
  */
-DDLogLevelDebug     = (DDLogLevelInfo    | DDLogFlagDebug),
+MQTTDDLogLevelDebug     = (MQTTDDLogLevelInfo    | MQTTDDLogFlagDebug),
 
 /**
  *  Error, warning, info, debug and verbose logs
  */
-DDLogLevelVerbose   = (DDLogLevelDebug   | DDLogFlagVerbose),
+MQTTDDLogLevelVerbose   = (MQTTDDLogLevelDebug   | MQTTDDLogFlagVerbose),
 
 /**
  *  All logs (1...11111)
  */
-DDLogLevelAll       = NSUIntegerMax
+MQTTDDLogLevelAll       = NSUIntegerMax
 };
 
 #ifdef DEBUG
 
-#define DDLogVerbose if (ddLogLevel & DDLogFlagVerbose) NSLog
-#define DDLogDebug if (ddLogLevel & DDLogFlagDebug) NSLog
-#define DDLogWarn if (ddLogLevel & DDLogFlagWarning) NSLog
-#define DDLogInfo if (ddLogLevel & DDLogFlagInfo) NSLog
-#define DDLogError if (ddLogLevel & DDLogFlagError) NSLog
+#define DDLogVerbose if (ddLogLevel & MQTTDDLogFlagVerbose) NSLog
+#define DDLogDebug if (ddLogLevel & MQTTDDLogFlagDebug) NSLog
+#define DDLogWarn if (ddLogLevel & MQTTDDLogFlagWarning) NSLog
+#define DDLogInfo if (ddLogLevel & MQTTDDLogFlagInfo) NSLog
+#define DDLogError if (ddLogLevel & MQTTDDLogFlagError) NSLog
 
 #else
 
@@ -96,7 +96,7 @@ DDLogLevelAll       = NSUIntegerMax
 #endif /* DEBUG */
 #endif /* LUMBERJACK */
 
-extern DDLogLevel ddLogLevel;
+extern MQTTDDLogLevel ddLogLevel;
 
 /** MQTTLog lets you define the log level for MQTTClient
  *  independently of using CocoaLumberjack
@@ -106,18 +106,18 @@ extern DDLogLevel ddLogLevel;
 /** setLogLevel controls the log level for MQTTClient
  *  @param logLevel as follows:
  *
- *  default for DEBUG builds is DDLogLevelVerbose
- *  default for RELEASE builds is DDLogLevelWarning
+ *  default for DEBUG builds is MQTTDDLogLevelVerbose
+ *  default for RELEASE builds is MQTTDDLogLevelWarning
  *
  *  Available log levels:
- *  DDLogLevelAll
- *  DDLogLevelVerbose
- *  DDLogLevelDebug
- *  DDLogLevelInfo
- *  DDLogLevelWarning
- *  DDLogLevelError
- *  DDLogLevelOff
+ *  MQTTDDLogLevelAll
+ *  MQTTDDLogLevelVerbose
+ *  MQTTDDLogLevelDebug
+ *  MQTTDDLogLevelInfo
+ *  MQTTDDLogLevelWarning
+ *  MQTTDDLogLevelError
+ *  MQTTDDLogLevelOff
  */
-+ (void)setLogLevel:(DDLogLevel)logLevel;
++ (void)setLogLevel:(MQTTDDLogLevel)logLevel;
 
 @end
